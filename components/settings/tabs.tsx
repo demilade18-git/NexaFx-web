@@ -2,9 +2,11 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AccountIcon, SecurityIcon, IdentityIcon } from "../icons";
+import { Mail } from "lucide-react";
 import { AccountInfo } from "./account-info";
 import { Security } from "./security";
 import { Notification } from "./notification";
+import { EmailPreferences } from "./email-preferences";
 import { ProfileOverview } from "../profile/profile-overview";
 import { PersonalInfo } from "../profile/personal-info";
 import { VerificationBanner } from "../profile/verification-banner";
@@ -49,6 +51,10 @@ export function TabsSettings() {
           />
           Identity Verification
         </TabsTrigger>
+        <TabsTrigger value="email">
+          <Mail className="size-3.5" />
+          Email & Statements
+        </TabsTrigger>
       </TabsList>
 
       <TabsContent value="account">
@@ -79,6 +85,9 @@ export function TabsSettings() {
         <div className="w-full">
           <FAQSection />
         </div>
+      </TabsContent>
+      <TabsContent value="email">
+        <EmailPreferences />
       </TabsContent>
     </Tabs>
   );

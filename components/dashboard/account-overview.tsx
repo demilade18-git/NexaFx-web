@@ -7,6 +7,7 @@ import {
   Check,
   CircleDollarSign,
 } from "lucide-react";
+import { InfoIcon } from "@/components/ui/info-icon";
 import { useEffect, useState } from "react";
 import { getBalances, type WalletBalance } from "@/lib/api/wallet";
 import { getProfile } from "@/lib/api/users";
@@ -138,8 +139,13 @@ export function AccountOverview({
                 </div>
               ) : (
                 <div className="space-y-2.5">
-                  <p className="text-sm font-medium text-muted-foreground">
+                  <p className="text-sm font-medium text-muted-foreground inline-flex items-center gap-1.5">
                     Total balance
+                    <InfoIcon
+                      content="Exchange rates are updated in real-time from market data"
+                      size="sm"
+                      side="top"
+                    />
                   </p>
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-black">
                     {balance}
@@ -213,8 +219,15 @@ export function AccountOverview({
                         {b.currency.toUpperCase() === "USD" && (
                           <CircleDollarSign className="w-5 h-5 text-foreground" />
                         )}
-                        <p className="text-sm font-medium text-foreground">
+                        <p className="text-sm font-medium text-foreground inline-flex items-center gap-1">
                           {b.currency.toUpperCase()}
+                          {b.currency.toUpperCase() === "USD" && (
+                            <InfoIcon
+                              content="Conversion fees apply when trading between currencies"
+                              size="sm"
+                              side="top"
+                            />
+                          )}
                         </p>
                       </div>
                     </div>
